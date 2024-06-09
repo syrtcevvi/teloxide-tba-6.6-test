@@ -1,13 +1,14 @@
-use std::error::Error;
+use std::{env::var, error::Error};
 
 use dotenvy::dotenv;
 
-use teloxide::{
+use teloxide_v6_6::{
     adaptors::{throttle::Limits, Throttle},
     prelude::*,
+    types::InputFile,
 };
 
-type Bot = Throttle<teloxide::Bot>;
+type Bot = Throttle<teloxide_v6_6::Bot>;
 type Result = std::result::Result<(), Box<dyn Error>>;
 
 #[tokio::main]
@@ -15,14 +16,30 @@ async fn main() -> Result {
     dotenv().ok();
     pretty_env_logger::init();
 
+    let user_tg_id = UserId(
+        var("USER_TG_ID")
+            .expect("USER_TG_ID must be set")
+            .parse::<u64>()
+            .expect("USER_TG_ID must be the user_id identificator number"),
+    );
+
     log::info!("The program started");
-    let bot = teloxide::Bot::from_env().throttle(Limits::default());
+    let bot = teloxide_v6_6::Bot::from_env().throttle(Limits::default());
     log::info!("Bot initialized");
 
     // Use breakpoints and lldb if you want to check the intermediate results
 
     // SetMyDescription/SetMyShortDescription & GetMyDescription/GetMyShortDescription
     test_set_descriptions(&bot).await?;
+
+    log::info!("SendSticker with the associated emoji");
+
+    // Each just uploaded sticker can have an associated emoji with it
+    let associated_emoji = "🦀";
+
+    bot.send_sticker(user_tg_id, InputFile::file("data/teloxide-logo.png"))
+        .emoji(associated_emoji)
+        .await?;
 
     Ok(())
 }
