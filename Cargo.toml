@@ -16,6 +16,7 @@ all = ["description", "send_sticker", "sticker_set"]
 description = []
 send_sticker = []
 sticker_set = []
+only_edit_sticker_set = []
 
 [dependencies]
 dotenvy = "0.15.7"
@@ -26,7 +27,8 @@ envy = "0.4.2"
 serde = { version = "1.0.203", features = ["derive"] }
 lazy_static = "1.4.0"
 
-teloxide_v6_5 = { version = "0.12.2", package = "teloxide", features = ["throttle"]}
+# Make sure to use the unreleased TBA 6.5 version
+teloxide_v6_5 = { git = "https://github.com/teloxide/teloxide", rev = "423ef411a928d4c2c61d9d063a5ed0275229ef60", package = "teloxide", features = ["throttle"]}
 teloxide_v6_6 = { git = "https://github.com/syrtcevvi/teloxide.git", package = "teloxide", branch = "feature/support-tba-6.6", features = ["throttle"]}
 # For the local-test and development purposes only
 # teloxide_v6_6 = { path = "../teloxide/crates/teloxide", package = "teloxide", features = ["throttle"]}

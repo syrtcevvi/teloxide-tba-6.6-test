@@ -37,5 +37,16 @@ async fn main() -> Result {
     )
     .await?;
 
+    /*
+        Due to the breaking change in TBA 7.2 (which removes `is_audio` and `is_animated`)
+        the method `get_sticker_set` fails, because it misses these fields while deserialization
+
+        Uncomment the following to check, provide the sticker name, created by your bot
+    */
+    // let sticker_set_name = Some("<YOUR STICKER SET NAME>".to_owned());
+    // if let Some(sticker_set_name) = sticker_set_name {
+    //     let sticker_set = BOT.get_sticker_set(sticker_set_name).await?;
+    // }
+
     Ok(())
 }
