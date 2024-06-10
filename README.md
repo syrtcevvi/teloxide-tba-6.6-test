@@ -17,7 +17,7 @@ Currently available features:
 
 Do not reran this program too quickly, there is the `Throttle` adapter used, though this can lead to strange errors (for instance, sticker set would be not found, or different API errors will emerge: Error: Api(InvalidStickersSet)). I think, it's caused by multiple recreation of the sticker set with the same name (delete and create immediately)
 
-To check how some methods work in the previous tba6_5 version use the command:
+To check how some methods work (now, only `send_sticker`) in the previous tba6_5 version use the command:
 ```
 cargo run --release --bin tba6_5
 ```
