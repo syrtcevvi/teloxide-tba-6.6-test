@@ -252,6 +252,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "envy"
+version = "0.4.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "3f47e0157f2cb54f5ae1bd371b30a2ae4311e1c028f575cd4e81de7353215965"
+dependencies = [
+ "serde",
+]
+
+[[package]]
 name = "equivalent"
 version = "1.0.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -621,6 +630,12 @@ checksum = "29c15563dc2726973df627357ce0c9ddddbea194836909d655df6a75d2cf296d"
 dependencies = [
  "wasm-bindgen",
 ]
+
+[[package]]
+name = "lazy_static"
+version = "1.4.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e2abad23fbc42b3700f2f279844dc832adb2b2eb069b2df918f455c4e18cc646"
 
 [[package]]
 name = "libc"
@@ -1200,30 +1215,6 @@ checksum = "20f34339676cdcab560c9a82300c4c2581f68b9369aedf0fae86f2ff9565ff3e"
 [[package]]
 name = "teloxide"
 version = "0.12.2"
-dependencies = [
- "ahash",
- "aquamarine 0.5.0",
- "bytes",
- "derive_more",
- "dptree",
- "either",
- "futures",
- "log",
- "mime",
- "pin-project",
- "serde",
- "serde_json",
- "teloxide-core 0.9.1",
- "thiserror",
- "tokio",
- "tokio-stream",
- "tokio-util",
- "url",
-]
-
-[[package]]
-name = "teloxide"
-version = "0.12.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c63345cf32a8850ebddcdd769dc2d5193d5e231262d5dada264b79da01a664da"
 dependencies = [
@@ -1247,32 +1238,28 @@ dependencies = [
 ]
 
 [[package]]
-name = "teloxide-core"
-version = "0.9.1"
+name = "teloxide"
+version = "0.12.2"
+source = "git+https://github.com/syrtcevvi/teloxide.git?branch=feature/support-tba-6.6#c24fdf173e337a4927ea1bad73d845df4fc5ab1f"
 dependencies = [
- "bitflags 1.3.2",
+ "ahash",
+ "aquamarine 0.5.0",
  "bytes",
- "chrono",
  "derive_more",
+ "dptree",
  "either",
  "futures",
  "log",
  "mime",
- "once_cell",
  "pin-project",
- "rc-box",
- "reqwest",
  "serde",
  "serde_json",
- "serde_with_macros",
- "take_mut",
- "takecell",
+ "teloxide-core 0.9.1 (git+https://github.com/syrtcevvi/teloxide.git?branch=feature/support-tba-6.6)",
  "thiserror",
  "tokio",
+ "tokio-stream",
  "tokio-util",
  "url",
- "uuid",
- "vecrem",
 ]
 
 [[package]]
@@ -1308,14 +1295,47 @@ dependencies = [
 ]
 
 [[package]]
+name = "teloxide-core"
+version = "0.9.1"
+source = "git+https://github.com/syrtcevvi/teloxide.git?branch=feature/support-tba-6.6#c24fdf173e337a4927ea1bad73d845df4fc5ab1f"
+dependencies = [
+ "bitflags 1.3.2",
+ "bytes",
+ "chrono",
+ "derive_more",
+ "either",
+ "futures",
+ "log",
+ "mime",
+ "once_cell",
+ "pin-project",
+ "rc-box",
+ "reqwest",
+ "serde",
+ "serde_json",
+ "serde_with_macros",
+ "take_mut",
+ "takecell",
+ "thiserror",
+ "tokio",
+ "tokio-util",
+ "url",
+ "uuid",
+ "vecrem",
+]
+
+[[package]]
 name = "teloxide-tba66-test"
 version = "0.1.0"
 dependencies = [
  "dotenvy",
+ "envy",
+ "lazy_static",
  "log",
  "pretty_env_logger",
- "teloxide 0.12.2",
+ "serde",
  "teloxide 0.12.2 (registry+https://github.com/rust-lang/crates.io-index)",
+ "teloxide 0.12.2 (git+https://github.com/syrtcevvi/teloxide.git?branch=feature/support-tba-6.6)",
  "tokio",
 ]
 

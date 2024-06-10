@@ -7,11 +7,34 @@ This repository is intended for testing the correctness of new methods from Tele
 To try this version out do the following:
 - Copy `.env.example` to `.env`
 - Fill environment variables with appropriate values
-- Run `cargo run` in the root of this repo
+- Run `cargo run --release --bin tba6_6 -F .. -F ..` in the root of this repo, where `-F` are used to select features.
+
+Currently available features:
+- `all` - Enable all features
+- `description` - test description-related methods
+- `send_sticker` - test `send_sticker` method with the associated emoji
+- `sticker_set` - test stickerset-related functionality
+
+Do not reran this program too quickly, there is the `Throttle` adapter used, though this can lead to strange errors (for instance, sticker set would be not found, or different API errors will emerge: Error: Api(InvalidStickersSet)). I think, it's caused by multiple recreation of the sticker set with the same name (delete and create immediately)
+
+To check how some methods work in the previous tba6_5 version use the command:
+```
+cargo run --release --bin tba6_5
+```
 
 So, this version brings the following methods:
 - [setMyDescription](https://core.telegram.org/bots/api#setmydescription)
 - [getMyDescription](https://core.telegram.org/bots/api#getmydescription)
 - [setMyShortDescription](https://core.telegram.org/bots/api#setmyshortdescription)
 - [getMyShortDescription](https://core.telegram.org/bots/api#getmyshortdescription)
+
+- [deleteStickerSet](https://core.telegram.org/bots/api#deletestickerset)
+
+And many others.. *TODO*
+
+And changes the following methods: 
+- [sendSticker](https://core.telegram.org/bots/api#sendsticker)
+- [uploadStickerFile](https://core.telegram.org/bots/api#uploadstickerfile)
+- [createNewStickerSet](https://core.telegram.org/bots/api#createnewstickerset)
+
 And many others.. *TODO*
