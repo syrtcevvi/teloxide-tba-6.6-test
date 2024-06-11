@@ -163,21 +163,17 @@ async fn create_new_sticker_set() -> Result {
                     sticker: InputFile::file_id(fst.id),
                     emoji_list: vec!["🦀".to_owned(), "😄".to_owned()],
                     mask_position: None,
-                    keywords: Some(vec![
-                        "teloxide".to_owned(),
-                        "f".to_owned(),
-                        "core".to_owned(),
-                    ]),
+                    keywords: vec!["teloxide".to_owned(), "f".to_owned(), "core".to_owned()],
                 },
                 InputSticker {
                     sticker: InputFile::file_id(snd.id),
                     emoji_list: vec!["🦀".to_owned(), "🥳".to_owned()],
                     mask_position: None,
-                    keywords: Some(vec![
+                    keywords: vec![
                         "teloxide".to_owned(),
                         "second".to_owned(),
                         "main".to_owned(),
-                    ]),
+                    ],
                 },
             ],
             StickerFormat::Static,
@@ -235,7 +231,28 @@ async fn create_new_sticker_set() -> Result {
             sticker_set_name
         );
 
-        // add_sticker_to_set (TODO)
+        log::info!("add_sticker_to_set");
+        let new_sticker = BOT
+            .upload_sticker_file(
+                ENV_CONFIG.user_id,
+                InputFile::file("data/teloxide-logo-blur.webp"),
+                StickerFormat::Static,
+            )
+            .await?;
+
+        BOT.add_sticker_to_set(
+            ENV_CONFIG.user_id,
+            sticker_set_name,
+            InputSticker {
+                sticker: InputFile::file_id(new_sticker.id),
+                emoji_list: vec!["😄".to_owned()],
+                keywords: vec![],
+                mask_position: None,
+            },
+        )
+        .await?;
+
+        log::info!("new sticker has been successfully added to your sticker set!");
     }
 
     Ok(())
