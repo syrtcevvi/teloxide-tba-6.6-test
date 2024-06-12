@@ -27,6 +27,7 @@ To check how some methods work (now, only `send_sticker`) in the previous tba6_5
 cargo run --release --bin tba6_5
 ```
 
+## TBA changes
 So, this version brings the following methods:
 - [setMyDescription](https://core.telegram.org/bots/api#setmydescription)
 - [getMyDescription](https://core.telegram.org/bots/api#getmydescription)
@@ -38,11 +39,13 @@ So, this version brings the following methods:
 - [setStickerEmojiList](https://core.telegram.org/bots/api#setstickeremojilist)
 - [setStickerKeywords](https://core.telegram.org/bots/api#setstickerkeywords)
 
-I have no idea, how to properly test the following methods:
-- [setCustomEmojiStickerSetThumbnail](https://core.telegram.org/bots/api#setcustomemojistickersetthumbnail)
-- [setStickerMaskPosition](https://core.telegram.org/bots/api#setstickermaskposition)
-
-And changes the following methods: 
+And changes the following methods (which are tested): 
 - [sendSticker](https://core.telegram.org/bots/api#sendsticker)
 - [uploadStickerFile](https://core.telegram.org/bots/api#uploadstickerfile)
 - [createNewStickerSet](https://core.telegram.org/bots/api#createnewstickerset)
+- [addStickerToSet](https://core.telegram.org/bots/api#addstickertoset)
+
+## Note
+I have no idea, how to properly test the following methods:
+- [setCustomEmojiStickerSetThumbnail](https://core.telegram.org/bots/api#setcustomemojistickersetthumbnail)
+- [setStickerMaskPosition](https://core.telegram.org/bots/api#setstickermaskposition)
